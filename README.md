@@ -1,5 +1,43 @@
 # GroupProject
 
+## Members
+Aitzhan Almerek, Augambaev Alen, Narbay Yersaiyn
+
+## Description of Project
+
+It is a streamlined coding practice platform designed to help students sharpen their programming skills. It serves as a lightweight alternative to major competitive programming sites, providing a focused environment where users can solve targeted problems and track their progress through a clean, efficient interface.
+
+Core Data Model
+The platform is built on four central entities to ensure a structured and scalable workflow:
+
+User (Student): Represents the platform’s learners, handling authentication and personalizing the experience.
+
+Category: Organizes problems into specific domains, such as Algorithms, SQL, or Data Structures.
+
+Task: The core unit of work, containing detailed problem descriptions, constraints, and difficulty levels (e.g., Easy, Medium, Hard).
+
+Submission: Tracks user interactions, storing the code submitted by a student for a specific task.
+
+Database Relationships
+The architecture utilizes ForeignKey relationships to maintain data integrity:
+
+Task → Category: Each task is assigned to a specific category for better navigation.
+
+Submission → Task & User: Each submission is linked to the specific problem it addresses and the student who wrote the code.
+
+Key Features & CRUD Functionality
+The platform empowers authorized students with full control over their learning journey:
+
+Create: Submit new solutions for any available task.
+
+Read: Access a comprehensive history of previous attempts and review task requirements.
+
+Update: Refine and resubmit code to improve logic or meet deadlines.
+
+Delete: Remove drafts or obsolete submissions to keep the workspace organized.
+
+## Angular
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
 
 ## Development server
