@@ -1,0 +1,33 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Categories</h1>
+    <p>Choose a topic to start practicing</p>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading categories...</p>
+  </div>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="categories-grid">
+    <div
+      *ngFor="let cat of categories"
+      class="category-card"
+      (click)="goToTasks(cat.id)"
+    >
+      <div class="card-icon">{{ cat.icon }}</div>
+      <h3 class="card-name">{{ cat.name }}</h3>
+      <p class="card-desc">{{ cat.description }}</p>
+      <div class="card-footer">
+        <span class="task-count">{{ cat.task_count }} tasks</span>
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && categories.length === 0" class="empty">
+    No categories found.
+  </div>
+</div>

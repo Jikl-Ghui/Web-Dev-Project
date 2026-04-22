@@ -1,0 +1,46 @@
+<div class="page">
+  <div class="page-header">
+    <button class="btn-back" routerLink="/categories">← Back</button>
+    <h1>Tasks</h1>
+  </div>
+
+  <div class="filters">
+    <button [class.active]="filter === 'all'" (click)="setFilter('all')">All</button>
+    <button [class.active]="filter === 'easy'" (click)="setFilter('easy')" class="easy">Easy</button>
+    <button [class.active]="filter === 'medium'" (click)="setFilter('medium')" class="medium">Medium</button>
+    <button [class.active]="filter === 'hard'" (click)="setFilter('hard')" class="hard">Hard</button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <table *ngIf="!loading && filteredTasks.length > 0" class="tasks-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Difficulty</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of filteredTasks; let i = index" class="task-row">
+        <td class="task-num">{{ i + 1 }}</td>
+        <td class="task-title">{{ task.title }}</td>
+        <td>
+          <span class="badge" [class]="task.difficulty">{{ task.difficulty }}</span>
+        </td>
+        <td>
+          <button class="btn-solve" (click)="goToTask(task.id)">Solve</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && filteredTasks.length === 0" class="empty">
+    No tasks found.
+  </div>
+</div>

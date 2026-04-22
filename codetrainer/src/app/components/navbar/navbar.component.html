@@ -1,0 +1,14 @@
+<nav class="navbar" *ngIf="auth.isLoggedIn()">
+  <div class="nav-brand">
+    <span class="brand-icon">&lt;/&gt;</span>
+    <span class="brand-name">CodeTrainer</span>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/categories" routerLinkActive="active">Categories</a></li>
+    <li><a routerLink="/submissions" routerLinkActive="active">My Submissions</a></li>
+  </ul>
+  <div class="nav-user">
+    <span class="username">{{ auth.getCurrentUser()?.username }}</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+</nav>

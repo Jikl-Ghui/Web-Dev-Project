@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-header">
+    <h1>My Submissions</h1>
+    <p>Your submission history</p>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="error" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && submissions.length === 0 && !error" class="empty">
+    <p>No submissions yet.</p>
+    <a routerLink="/categories" class="btn-start">Start solving tasks</a>
+  </div>
+
+  <div *ngIf="!loading && submissions.length > 0" class="submissions-list">
+    <div *ngFor="let sub of submissions" class="submission-card">
+      <div class="sub-info">
+        <h3 class="sub-task">{{ sub.task_title }}</h3>
+        <div class="sub-meta">
+          <span class="lang-badge">{{ sub.language }}</span>
+          <span class="date">{{ sub.submitted_at | date:'dd MMM yyyy, HH:mm' }}</span>
+        </div>
+      </div>
+      <div class="sub-right">
+        <span class="status-badge" [class]="sub.status">{{ sub.status }}</span>
+        <div class="sub-actions">
+          <button class="btn-view" (click)="viewCode(sub)">View Code</button>
+          <button class="btn-delete" (click)="deleteSubmission(sub.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Code Modal -->
+  <div class="modal-overlay" *ngIf="selectedCode !== null" (click)="closeCode()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>{{ selectedTitle }}</h3>
+        <button class="btn-close" (click)="closeCode()">X</button>
+      </div>
+      <pre class="code-view">{{ selectedCode }}</pre>
+    </div>
+  </div>
+</div>

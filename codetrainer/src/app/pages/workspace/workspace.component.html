@@ -1,0 +1,76 @@
+<div class="workspace-page">
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <div *ngIf="error && !loading" class="error-msg">{{ error }}</div>
+
+  <div *ngIf="!loading && task" class="workspace">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="panel-header">
+        <a routerLink="/categories" class="btn-back">← Back</a>
+        <span class="badge" [class]="task.difficulty">{{ task.difficulty }}</span>
+      </div>
+
+      <h2 class="task-title">{{ task.title }}</h2>
+      <p class="task-category">{{ task.category_name }}</p>
+
+      <div class="section">
+        <h4>Description</h4>
+        <p class="task-desc">{{ task.description }}</p>
+      </div>
+
+      <div class="section" *ngIf="task.examples">
+        <h4>Examples</h4>
+        <pre class="examples">{{ task.examples }}</pre>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="editor-header">
+        <select
+          [(ngModel)]="language"
+          (ngModelChange)="onLanguageChange()"
+          class="lang-select"
+        >
+          <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+        </select>
+      </div>
+
+      <textarea
+        [(ngModel)]="code"
+        class="code-editor"
+        spellcheck="false"
+      ></textarea>
+
+      <!-- Console -->
+      <div class="console">
+        <div *ngIf="!result && !submitLoading" class="console-empty">
+          Click "Submit" to run your code
+        </div>
+        <div *ngIf="submitLoading" class="console-loading">Running...</div>
+        <div *ngIf="result === 'accepted'" class="console-accepted">
+          Accepted — Great job!
+        </div>
+        <div *ngIf="result === 'wrong'" class="console-wrong">
+          Wrong Answer — Try again!
+        </div>
+      </div>
+
+      <div class="editor-footer">
+        <button
+          class="btn-submit"
+          (click)="onSubmit()"
+          [disabled]="submitLoading"
+        >
+          {{ submitLoading ? 'Running...' : 'Submit' }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
