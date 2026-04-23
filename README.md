@@ -3,7 +3,7 @@
 ## Group Members
 - Member 1: Aitzhan Almerek
 - Member 2: Augambaev Alen
-- Member 3: 
+- Member 3: Narbay Yersaiyn
 
 ## Project Description
 A mini coding practice platform where users can browse task categories, solve coding problems, and track their submission history.
