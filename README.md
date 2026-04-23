@@ -1,9 +1,9 @@
 # CodeTrainer — Online Coding Practice Platform
 
 ## Group Members
-- Member 1
-- Member 2
-- Member 3
+- Member 1: Aitzhan Almerek
+- Member 2: Augambaev Alen
+- Member 3: 
 
 ## Project Description
 A mini coding practice platform where users can browse task categories, solve coding problems, and track their submission history.
